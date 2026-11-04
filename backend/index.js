@@ -1,4 +1,5 @@
 import express from 'express';
+import { connectDB } from './DB/connectDB';
 
 
 
@@ -9,5 +10,6 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(3000,()=>{
+    connectDB();
     console.log("Server is running on port 3000");
 });
