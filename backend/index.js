@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
   res.send("Hello World! ");
 });
 
+app.use(express.json());// middlewaare
+
 app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
