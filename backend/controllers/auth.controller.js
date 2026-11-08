@@ -24,22 +24,21 @@ export const signup = async (req, res) => {
       name,
       verificationToken,
       verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000,
-    })
+    });
     await user.save();
 
-    generateTokenAndSetCookie(res,user._id);
-res.status(201).json({
-  success:true,
-  message:true,
-  message:"User created successfully",
-  user:{
-    ...user._doc,
-    password:undefined,
-  },
-})
-
+    generateTokenAndSetCookie(res, user._id);
+    res.status(201).json({
+      success: true,
+      message: true,
+      message: "User created successfully",
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
+    });
   } catch (error) {
-      res.status(400).json({ success: false, message: error.message });
+    res.status(400).json({ success: false, message: error.message });
   }
 };
 
